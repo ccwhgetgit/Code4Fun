@@ -1,0 +1,32 @@
+class Solution(object):
+    def maxDepth(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        #calculating the depth of the paranthesis 
+        
+        count = 0 
+        global_max = 0 
+        
+        stack = [] 
+        
+        for i in range(len(s)): 
+            if s[i] == "(":
+                count += 1
+                
+                if count > global_max: 
+                    global_max = count
+                    
+            elif s[i] ==")":
+                if count > 0 : 
+                    count -= 1
+                else: 
+                    return - 1
+                
+        
+        if count!= 0 : 
+            return -1 
+        
+        
+        return global_max
