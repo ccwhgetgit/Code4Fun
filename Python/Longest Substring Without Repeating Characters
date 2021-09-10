@@ -1,0 +1,32 @@
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        count = 0 
+        global_count = 0 
+        
+        if s.isspace() == True:
+            global_count = 1 
+            
+        elif len(s) == 1:
+            global_count = 1
+            
+        else: 
+            for i in range(0, len(s)-1):
+                str_list = []
+
+                str_list.append(s[i])
+                count = 1
+                for j in range(i + 1, len(s) ):
+                    if s[j] not in str_list: 
+                        str_list.append(s[j])
+                        count +=1
+                    else:
+                        break
+                        
+                if count >= global_count:
+                    global_count = count 
+        
+        return global_count
