@@ -1,0 +1,21 @@
+class Solution(object):
+    def maxUniqueSplit(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        
+        self.maxVal=0
+        def backtrack(index,currentSet):
+            if index==len(s):
+                self.maxVal=max(self.maxVal,len(currentSet))
+                return
+            word=''    
+            for i in range(index,len(s)):
+                word+=s[i]
+                if word not in currentSet:
+                    currentSet.add(word)
+                    backtrack(i+1,currentSet)
+                    currentSet.remove(word)
+        backtrack(0,set())
+        return self.maxVal
