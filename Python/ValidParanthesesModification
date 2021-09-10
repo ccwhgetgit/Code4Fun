@@ -1,0 +1,42 @@
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        open_list = []
+        close_list = [] 
+        
+        still_ok = True 
+        
+        #similar with a fifo system 
+        
+        open = ['{',  '(', '[' ]
+        
+        close = [  '}', ')',']']
+        
+            
+        for i in range(len(s)): 
+            if s[i] in open:
+                open_list.append(s[i])
+            if s[i] in close:
+                close_list.append(s[i])
+                    
+                    
+        if len(open_list) != len(close_list):
+            return False
+        else: 
+            for i in range(len(open_list)):
+                if open_list[i] == "(" and close_list[i] != ")":
+                        return False 
+                elif (open_list[i] == "[" and close_list[i] != "]"):
+                        return False
+                elif (open_list[i] == "{" and close_list[i] != "}"):
+                        return False
+                else:
+                    still_ok
+                
+                
+        return still_ok
+            
+
