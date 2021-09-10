@@ -1,0 +1,44 @@
+class Solution(object):
+    def reorderSpaces(self, text):
+        """
+        :type text: str
+        :rtype: str
+        """
+        extracted = []
+        count = text.count(" ")
+        extracted = text.split()
+        
+        wordCount = len(extracted)
+        
+        spaces = wordCount - 1 
+        
+        spacesBetween = 0 
+        
+        if spaces == 0: 
+            if count == 0: 
+                return text 
+            else: 
+                spacesBetween = count
+        else: 
+            spacesBetween = count // spaces
+        
+        spacesForTheLast = count - (spacesBetween * spaces)
+        
+        ans = ""
+        space_insert =""
+        space_insert_last =""
+        for i in range(spacesBetween):
+         space_insert += " "
+        
+        for i in range(len(extracted) -1 ): 
+            ans += extracted[i]
+            ans += space_insert
+            
+        
+        
+        for i in range(spacesForTheLast ):
+         space_insert_last += " "
+        ans += extracted[-1]
+        ans += space_insert_last
+
+        return ans
