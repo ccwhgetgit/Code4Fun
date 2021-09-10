@@ -4,39 +4,40 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        open_list = []
-        close_list = [] 
         
-        still_ok = True 
         
-        #similar with a fifo system 
+        #use stacks to extract and compare 
+        opening = "{[("
+        closing = "}])"
         
-        open = ['{',  '(', '[' ]
-        
-        close = [  '}', ')',']']
-        
+        brackets = {
             
-        for i in range(len(s)): 
-            if s[i] in open:
-                open_list.append(s[i])
-            if s[i] in close:
-                close_list.append(s[i])
-                    
-                    
-        if len(open_list) != len(close_list):
-            return False
-        else: 
-            for i in range(len(open_list)):
-                if open_list[i] == "(" and close_list[i] != ")":
-                        return False 
-                elif (open_list[i] == "[" and close_list[i] != "]"):
-                        return False
-                elif (open_list[i] == "{" and close_list[i] != "}"):
-                        return False
-                else:
-                    still_ok
-                
-                
-        return still_ok
+            ')': '(', 
             
+            '}': '{', 
+            
+            ']': '['
+        
+        }
+        
+        
+        stack = []
 
+        for char in s:
+            
+            if char in opening:
+                stack.append(char)
+                
+                
+            elif char in closing:
+                
+                if len(stack) == 0:
+                    return False
+                
+                if stack[-1] == brackets[char]:
+                    stack.pop()
+                    
+                else:
+                    return False
+                
+        return len(stack) == 0
