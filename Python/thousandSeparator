@@ -1,0 +1,33 @@
+class Solution(object):
+    def thousandSeparator(self, n):
+        """
+        :type n: int
+        :rtype: str
+        """
+        #separate every 3 digits 
+        
+        output = []
+        n = str(n)
+        converted = n[::-1]
+        
+        for i in range(len(n)): 
+            if i >= 3:
+                if  i % 3 == 0:
+                   
+                    output.append('.')
+                    output.append(converted[i])
+                    
+                else: 
+                    output.append(converted[i])
+                   
+            else: 
+                output.append(converted[i])
+        
+        ans = ""
+        
+        output = output[::-1]
+        
+        for i in range(len(output)): 
+            ans += output[i]
+            
+        return ans
