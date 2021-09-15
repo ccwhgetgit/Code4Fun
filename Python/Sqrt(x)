@@ -1,0 +1,10 @@
+class Solution(object):
+    def mySqrt(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        output = x**0.5
+        string = str(output) 
+        string = string.split(".")
+        return string[0]
