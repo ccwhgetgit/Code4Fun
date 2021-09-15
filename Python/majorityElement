@@ -1,0 +1,23 @@
+class Solution(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        dict = {}
+        
+        for i in range(len(nums)):
+            if nums[i] not in dict.keys(): 
+                dict[nums[i]] = 1 
+            else: 
+                dict[nums[i]] += 1
+                
+        maximum = 0 
+        output = 0 
+        
+        for j in dict.keys(): 
+            if dict[j] > maximum: 
+                maximum = dict[j]
+                output = j 
+                
+        return output
