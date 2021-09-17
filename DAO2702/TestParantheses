@@ -1,0 +1,28 @@
+def testparentheses(string): 
+    stack = []
+    
+    openlist = '([{'
+    closelist = ')]}'
+    
+    
+    dictionary = {
+        
+        ')' : '(' , 
+        ']' : '[', 
+        '}' : '{'
+    }
+    stack = []
+    for i in range(len(string)):
+        if string[i] in openlist: 
+            stack.append(string[i])
+            
+        if string[i] in closelist: 
+            for j in dictionary.keys(): 
+                if j == string[i]: 
+                    if dictionary[j] != stack.pop(): 
+                        return False
+    
+    
+    
+    
+    return True 
