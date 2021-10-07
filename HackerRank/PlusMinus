@@ -1,0 +1,24 @@
+def plusMinus(arr):
+    # Write your code here
+    posCounter = 0 
+    negCounter = 0 
+    zeroCounter = 0 
+    
+    for i in arr: 
+        if i > 0: 
+            posCounter += 1
+        elif i == 0: 
+            zeroCounter += 1 
+        else: 
+            negCounter += 1 
+            
+    print('{0:0.6f}'.format(posCounter / len(arr)))
+    print('{0:0.6f}'.format(negCounter/len(arr)))
+    print('{0:0.6f}'.format(zeroCounter / len(arr)))
+
+if __name__ == '__main__':
+    n = int(input().strip())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    plusMinus(arr)
