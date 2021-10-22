@@ -1,0 +1,24 @@
+class Solution(object):
+    def frequencySort(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        dictionary = {}
+    
+        for i in range(len(s)):
+            if s[i] not in dictionary: 
+                dictionary[s[i]] = 1
+            else: 
+                dictionary[s[i]] +=1
+        output = ""        
+        maxCount = 0
+
+        #sort the dictionary based on values in desc order but oconverted to list 
+        dictionary = sorted(dictionary.items(), key=lambda x: x[1], reverse=True)
+    
+        for i in range(len(dictionary)): 
+            for j in range(dictionary[i][1]): 
+                output += dictionary[i][0]
+
+        return output
