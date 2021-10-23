@@ -1,0 +1,23 @@
+class Solution(object):
+    def firstMissingPositive(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        nums.sort()
+        n = []
+        
+        #remove duplicates within the list 
+        for j in range(len(nums)):
+            if nums[j] not in n: 
+                n.append(nums[j])
+                
+        count = 1 
+        for i in range(len(n)): 
+            if n[i] > 0: 
+                if n[i] == count:
+                    count += 1
+                else: 
+                    return count
+
+        return count 
