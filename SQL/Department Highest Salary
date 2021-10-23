@@ -1,0 +1,11 @@
+# Write your MySQL query statement below
+select d1.name as "Department", e1.name as "Employee", salary as "Salary"
+from Employee e1 inner join Department d1
+where e1.departmentId = d1.id
+and e1.salary >= all
+(
+
+select salary 
+from Employee e2 
+where e1.departmentId = e2.departmentId)
+
