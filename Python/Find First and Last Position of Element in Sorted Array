@@ -1,0 +1,35 @@
+class Solution(object):
+    def searchRange(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        start = 0 
+        end = 0 
+        have = False
+        for i in range(len(nums)): 
+            if nums[i] == target: 
+                start = i
+                have = True
+                break 
+                
+        
+        for j in range(start, len(nums)): 
+            if nums[j] == target: 
+                end = j 
+        
+        l = []
+        l.append(start)
+        l.append(end) 
+        
+        if start == 0 and have ==False: 
+            return [-1,-1]
+        #means not found
+        elif end == 0 and have :
+            #means only itself as the start 
+            
+            return [start, start]
+        else: 
+            #works
+            return l
