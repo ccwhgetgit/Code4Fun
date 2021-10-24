@@ -1,0 +1,11 @@
+/*
+Enter your query here.
+*/
+select c.company_code, c.founder, count(DISTINCT l.lead_manager_code), count(DISTINCT s.senior_manager_code), count(DISTINCT m.manager_code), count(DISTINCT e.employee_code) 
+from Company c, Lead_Manager l, Senior_Manager s, Manager m ,Employee e
+where c.company_code = l.company_code
+and c.company_code = s.company_code
+and c.company_code = m.company_code 
+and c.company_code = e.company_code
+group by c.company_code, c.founder
+order by c.company_code asc
