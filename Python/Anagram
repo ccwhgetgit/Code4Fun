@@ -1,14 +1,13 @@
 class Solution(object):
+    from collections import Counter
     def isAnagram(self, s, t):
         """
         :type s: str
         :type t: str
         :rtype: bool
         """
-        for i in range(len(t)): 
-            if t[i] not in s: 
-                return False
-        for i in range(len(s)): 
-            if s[i] not in t: 
-                return False
+
+        if Counter(s) != Counter(t): 
+            return False
+        
         return True
