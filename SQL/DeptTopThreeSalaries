@@ -1,0 +1,16 @@
+# Write your MySQL query statement below
+
+select e.name, d.name, e.salary
+from Employee e INNER JOIN Department d 
+on e.departmentId = d.id 
+where 3 >
+(Select count(distinct e2.salary)
+from Employee e2 
+where e2.salary > e.salary 
+and e.departmentId = e2.departmentId 
+)
+
+
+
+
+
